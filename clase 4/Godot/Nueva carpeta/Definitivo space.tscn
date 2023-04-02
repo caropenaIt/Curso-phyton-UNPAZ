@@ -1,0 +1,488 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://Nave.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Laser.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spawn 1.gd" type="Script" id=3]
+[ext_resource path="res://Roca.tscn" type="PackedScene" id=4]
+[ext_resource path="res://asets/Planeta.png" type="Texture" id=5]
+[ext_resource path="res://Main.gd" type="Script" id=6]
+[ext_resource path="res://stocky.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://spider ship.png" type="Texture" id=8]
+[ext_resource path="res://Rayopng.png" type="Texture" id=9]
+[ext_resource path="res://Sweb.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Spider_nave.gd" type="Script" id=11]
+[ext_resource path="res://asets/little ship.png" type="Texture" id=12]
+[ext_resource path="res://Sweb.png" type="Texture" id=13]
+[ext_resource path="res://asets/spider ship.png" type="Texture" id=14]
+[ext_resource path="res://asets/creepy ship.png" type="Texture" id=15]
+[ext_resource path="res://Boss.gd" type="Script" id=16]
+[ext_resource path="res://Atomo.tscn" type="PackedScene" id=17]
+[ext_resource path="res://asets/Metal Slug - Assault Theme Soundtrack.ogg" type="AudioStream" id=18]
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+ 
+uniform float BG_vel;
+ 
+void fragment(){
+	vec2 shifteduv = UV;
+	shifteduv.x += TIME * BG_vel;
+	vec4 color = texture(TEXTURE, shifteduv);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/BG_vel = 0.2
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22.5, 368.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 17, 368 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -32 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "spawn 1"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.001, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -32 ), Vector2( 0, -32 ), Vector2( 720, -32 ) ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 60
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 60
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 80
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 20
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 20
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 80
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Entrando"
+length = 2.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 534, -34 ), Vector2( 540, 80 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Ofensiva"
+length = 12.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 3, 6, 9, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 544, 87 ), Vector2( 74, 249 ), Vector2( 540, 65 ), Vector2( 1018, 228 ), Vector2( 559.29, 91.5484 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 534, -34 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 43.0
+
+[sub_resource type="Animation" id=17]
+resource_name = "Con todo"
+length = 5.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -80, 136 ), Vector2( 232, 144 ), Vector2( 480, 160 ), Vector2( 696, 136 ), Vector2( 984, 144 ), Vector2( 1264, 144 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -80, 136 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=16]
+radius = 80.0
+height = 0.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Fondo" type="Sprite" parent="."]
+material = SubResource( 8 )
+position = Vector2( 504, 888 )
+rotation = -1.5749
+scale = Vector2( 3.62427, 4.12823 )
+texture = ExtResource( 5 )
+
+[node name="Pared 1" type="StaticBody2D" parent="."]
+position = Vector2( -11, 712 )
+z_as_relative = false
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pared 1"]
+position = Vector2( 0.5, -346.5 )
+shape = SubResource( 1 )
+
+[node name="Pared 2" type="StaticBody2D" parent="."]
+position = Vector2( 1093, 719 )
+z_as_relative = false
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pared 2"]
+position = Vector2( 4, -347 )
+shape = SubResource( 2 )
+
+[node name="Nave" parent="." instance=ExtResource( 1 )]
+position = Vector2( 529, 663 )
+
+[node name="Laser" parent="Nave" instance=ExtResource( 2 )]
+position = Vector2( -786, -225 )
+
+[node name="Roca" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1190, 281 )
+
+[node name="Spawn 1" type="Position2D" parent="."]
+position = Vector2( 0, -32 )
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spawn 1"]
+autoplay = "spawn 1"
+anims/RESET = SubResource( 3 )
+"anims/spawn 1" = SubResource( 4 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Contador" type="Label" parent="HUD"]
+anchor_left = 0.024
+anchor_top = 0.078
+anchor_right = 0.285
+anchor_bottom = 0.164
+margin_left = 0.0799999
+margin_top = -0.16
+margin_right = 0.199982
+margin_bottom = -0.0800018
+custom_colors/font_color = Color( 1, 0.960784, 0.00784314, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "PUNTOS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cartel puntos" type="Label" parent="HUD"]
+anchor_left = 0.023
+anchor_right = 0.284
+anchor_bottom = 0.093
+margin_left = 0.159998
+margin_top = 5.0
+margin_right = 0.279999
+margin_bottom = 0.0400009
+custom_colors/font_color = Color( 0.968627, 1, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "PUNTOS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Perdiste" type="Label" parent="HUD"]
+visible = false
+anchor_left = 0.302
+anchor_top = 0.328
+anchor_right = 0.736
+anchor_bottom = 0.442
+margin_left = -36.16
+margin_top = -0.160004
+margin_right = 3.11993
+margin_bottom = -0.240021
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = SubResource( 13 )
+text = "!PERDISTE!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Salir" type="TextureButton" parent="HUD/Perdiste"]
+pause_mode = 2
+anchor_left = 0.236
+anchor_top = 0.5
+anchor_right = 0.375
+anchor_bottom = 0.7
+margin_left = -154.888
+margin_top = 77.0
+margin_right = -75.5
+margin_bottom = 210.6
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Salir" type="Label" parent="HUD/Perdiste/Salir"]
+anchor_left = 0.273
+anchor_top = 0.44
+anchor_right = 0.667
+anchor_bottom = 0.553
+margin_left = -0.949986
+margin_right = 10.95
+margin_bottom = 4.05001
+custom_colors/font_color = Color( 0.666667, 0.835294, 1, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "SALIR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jugar otra vez" type="TextureButton" parent="HUD/Perdiste/Salir/Salir"]
+pause_mode = 2
+anchor_left = 0.58
+anchor_top = 0.5
+anchor_right = 0.719
+anchor_bottom = 0.708
+margin_left = 289.82
+margin_top = -70.5
+margin_right = 429.951
+margin_bottom = 75.132
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jugar otra vez" type="Label" parent="HUD/Perdiste/Salir/Salir/Jugar otra vez"]
+anchor_top = 0.38
+anchor_right = 1.18
+anchor_bottom = 0.5
+margin_left = -26.0
+margin_top = -3.8147e-06
+margin_right = -1.52588e-05
+margin_bottom = 3.0
+custom_colors/font_color = Color( 0.945098, 1, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "JUGAR OTRA VEZ"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ganaste" type="Label" parent="HUD"]
+visible = false
+margin_left = 296.0
+margin_top = 176.0
+margin_right = 776.0
+margin_bottom = 258.0
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "¡GANASTE!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Salir2" type="TextureButton" parent="HUD/Ganaste"]
+pause_mode = 2
+anchor_left = 0.236
+anchor_top = 0.5
+anchor_right = 0.375
+anchor_bottom = 0.7
+margin_left = -161.28
+margin_top = 135.0
+margin_right = -20.593
+margin_bottom = 282.2
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Salir" type="Label" parent="HUD/Ganaste/Salir2"]
+anchor_left = 0.273
+anchor_top = 0.44
+anchor_right = 0.667
+anchor_bottom = 0.553
+margin_left = -24.6221
+margin_top = -7.98402
+margin_right = -12.7222
+margin_bottom = -3.93401
+custom_colors/font_color = Color( 0.666667, 0.835294, 1, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "SALIR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jugar otra vez2" type="TextureButton" parent="HUD/Ganaste/Salir2/Salir"]
+pause_mode = 2
+anchor_left = 0.58
+anchor_top = 0.5
+anchor_right = 0.719
+anchor_bottom = 0.708
+margin_left = 289.82
+margin_top = -70.5
+margin_right = 429.951
+margin_bottom = 75.132
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jugar otra vez" type="Label" parent="HUD/Ganaste/Salir2/Salir/Jugar otra vez2"]
+anchor_top = 0.38
+anchor_right = 1.18
+anchor_bottom = 0.5
+margin_left = -26.0
+margin_top = -3.8147e-06
+margin_right = -1.52588e-05
+margin_bottom = 3.0
+custom_colors/font_color = Color( 0.945098, 1, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "JUGAR OTRA VEZ"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sweb" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1164, -11 )
+
+[node name="Spider nave" type="Area2D" parent="."]
+position = Vector2( 534, -34 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Spider" type="Sprite" parent="Spider nave"]
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider nave"]
+anims/Entrando = SubResource( 9 )
+anims/Ofensiva = SubResource( 10 )
+anims/RESET = SubResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spider nave"]
+shape = SubResource( 12 )
+
+[node name="Boss" type="Area2D" parent="."]
+position = Vector2( -80, 136 )
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Boss"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Boss"]
+"anims/Con todo" = SubResource( 17 )
+anims/RESET = SubResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss"]
+position = Vector2( -56, -64 )
+shape = SubResource( 16 )
+
+[node name="Atomo" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1288, 104 )
+
+[node name="Juego sonido" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+autoplay = true
+
+[connection signal="tree_exited" from="Nave" to="." method="_on_Nave_tree_exited"]
+[connection signal="pressed" from="HUD/Perdiste/Salir" to="." method="_on_Salir_pressed"]
+[connection signal="pressed" from="HUD/Perdiste/Salir/Salir/Jugar otra vez" to="." method="_on_Jugar_otra_vez_pressed"]
+[connection signal="pressed" from="HUD/Ganaste/Salir2" to="." method="_on_Salir2_pressed"]
+[connection signal="pressed" from="HUD/Ganaste/Salir2/Salir/Jugar otra vez2" to="." method="_on_Jugar_otra_vez2_pressed"]
+[connection signal="area_entered" from="Sweb" to="Nave" method="_on_Sweb_area_entered"]
+[connection signal="area_entered" from="Spider nave" to="Spider nave" method="_on_Spider_nave_area_entered"]
+[connection signal="animation_finished" from="Spider nave/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="area_entered" from="Boss" to="Boss" method="_on_Boss_area_entered"]
+[connection signal="tree_exited" from="Boss" to="." method="_on_Boss_tree_exited"]

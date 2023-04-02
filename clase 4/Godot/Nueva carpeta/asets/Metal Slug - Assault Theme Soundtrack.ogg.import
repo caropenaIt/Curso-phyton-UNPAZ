@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Metal Slug - Assault Theme Soundtrack.ogg-82432f98fb8cb33dbc885ed6613018ee.oggstr"
+
+[deps]
+
+source_file="res://asets/Metal Slug - Assault Theme Soundtrack.ogg"
+dest_files=[ "res://.import/Metal Slug - Assault Theme Soundtrack.ogg-82432f98fb8cb33dbc885ed6613018ee.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

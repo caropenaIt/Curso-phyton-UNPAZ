@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Crear Pelota.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Piso.tscn" type="PackedScene" id=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 1.0
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( -1, 0 )
+
+[node name="Pelota" parent="." instance=ExtResource( 1 )]
+physics_material_override = SubResource( 1 )
+
+[node name="Piso" parent="." instance=ExtResource( 2 )]
